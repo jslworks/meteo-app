@@ -1,3 +1,6 @@
+import axios from 'axios'
+const baseUrl = 'http://localhost:3001/api/location'
+
 /**
  * Get current user position from the browser
  * @returns a Promise with the position on the map
@@ -22,4 +25,10 @@ const getCurrCoords = async () => {
   }
 }
 
-export { getCurrCoords }
+const getLocInfoAll = async (coords) => {
+  const { data } = await axios.get(baseUrl, { params: { coords } })
+
+  return data
+}
+
+export { getCurrCoords, getLocInfoAll }
