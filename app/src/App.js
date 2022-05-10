@@ -2,37 +2,50 @@ import { useEffect } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './styles/App.css'
-import { currCoords } from './reducers/locationReducer.js'
+import { currCoords, obtainLocInfoAll } from './reducers/locationReducer.js'
 import logo from './assets/logo.png'
 import Menu from './components/Menu'
 import MainPage from './components/MainPage'
+import Location from './components/Location'
 import Maps from './components/Maps'
 import Alerts from './components/Alerts'
 import AboutUs from './components/AboutUs'
-
-/**
- * TODO:
- * Escribir ternario para MainPage o Init si
- * se han obtenido los datos o no
- */
+import LocGoogleMaps from './components/LocGoogleMaps'
+import NoLoc from './components/NoLoc'
 
 const App = () => {
   const dispatch = useDispatch()
 
   const coords = useSelector((state) => state.location.currCoords)
+  const loc = useSelector((state) => state.location.loc)
+  const currMeteo = useSelector((state) => state.location.currMeteo)
 
+  /* We need a 2nd useEffect, splitting getting coords and
+  getting location Info to avoid infinite rerendering if we
+  dispatch both together */
   useEffect(() => {
     dispatch(currCoords())
   }, [dispatch])
 
+  useEffect(() => {
+    if (coords) {
+      dispatch(obtainLocInfoAll(coords))
+      setInterval(() => {
+        dispatch(obtainLocInfoAll(coords))
+      }, 600000)
+    }
+  }, [dispatch, coords])
+
   return (
     <BrowserRouter>
       <header>
-        <Link id='logo' to='/main'><img src={logo} alt='logo' /></Link>
+        <Link id='logo' to='/'><img src={logo} alt='logo' /></Link>
+        <Location />
         <Menu />
       </header>
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path='/' element={(coords && loc && currMeteo) ? <MainPage /> : <NoLoc />} />
+        <Route path='/locationt' element={<LocGoogleMaps />} />
         <Route path='/maps' element={coords ? <Maps coords={coords} /> : null} />
         <Route path='/alerts' element={<Alerts />} />
         <Route path='/aboutus' element={<AboutUs />} />

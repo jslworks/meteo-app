@@ -1,0 +1,38 @@
+/* Manual */
+#location {
+  display: flex;
+}
+
+#location-manual {
+  border-radius: 3px;
+}
+
+button {
+  background: none;
+  border: none;
+  margin-left: 3px;
+}
+/* MAP */
+.marker {
+  display: none;
+}
+
+.marker-active {
+  display: block;
+}
+
+#marker-li {
+  list-style: none;
+  width: 10px;
+  height: 10px;
+}
+
+#marker-ico {
+  width: 50px;
+  height: 50px;
+}
+
+#marker-loc {
+  background-color: white;
+  border-radius: 6;
+}

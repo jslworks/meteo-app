@@ -1,3 +1,7 @@
+import axios from 'axios'
+
+const baseUrl = 'http://localhost:3001/api/location'
+
 /**
  * Get current user position from the browser
  * @returns a Promise with the position on the map
@@ -16,10 +20,26 @@ function currPos () {
  */
 const getCurrCoords = async () => {
   const { coords } = await currPos()
+
   return {
     lat: coords.latitude,
     lon: coords.longitude
   }
 }
 
-export { getCurrCoords }
+/**
+ * Auto actual info obtaining
+ */
+const getLocInfoAllAuto = async (coords) => {
+  const { data } = await axios.get(baseUrl, { params: { coords } })
+
+  return data
+}
+
+const getLocInfoManual = async locName => {
+  const { data } = await axios.get(baseUrl, { params: { locName } })
+
+  return data
+}
+
+export { getCurrCoords, getLocInfoAllAuto, getLocInfoManual }
