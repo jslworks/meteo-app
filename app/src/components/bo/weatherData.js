@@ -1,40 +1,8 @@
-// const weatherData = require('./bo/weatherData')
 import moment from 'moment'
 
-export default function MainPage (props) {
-  const meteoAreaData = weatherData(props) // Get data and mount into structure
-  const meteoAreaDataEntries = Object.entries(meteoAreaData.current)
-  // console.log(meteoAreaDataEntries)
-
-  // Build view
-  const buildWeatherTable = (entries) => {
-    return entries.map((entry, index, a) => {
-      // console.log(typeof (entry))
-      // console.log(typeof (entry[0]))
-      // console.log(typeof (entry[1]))
-      console.log(entry[0])
-      console.log(index)
-      console.log(a)
-      return (
-        <tr key={index}>
-          <th key={index}> {entry[0]} </th>
-          <td key={index}> {entry[1]} </td>
-        </tr>
-      )
-    })
-  }
-
-  // Mantener el aplicativo actualizad
-
-  return (
-    <table className='currentWeatherData' id='currentWeatherData'>
-      <tbody>
-        {buildWeatherTable(meteoAreaDataEntries)}
-      </tbody>
-    </table>
-  )
-}
-
+/* El objeto ***loc*** otro objeto llamado *local_names*, el cual contiene el nombre de la ciudad para cada idioma.
+Más adelante tener en cuenta para comparar con el idioma que tenga configurado
+el usuario para así establecer el nombre del lugar en el idioma del usuario */
 const weatherData = (data) => {
   const momentDate = moment().toObject()
 
@@ -76,3 +44,5 @@ const weatherData = (data) => {
     hourly: data.currMeteo.hourly
   }
 }
+
+export default { weatherData }
