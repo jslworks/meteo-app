@@ -1,30 +1,23 @@
-// const weatherData = require('./bo/weatherData')
 import moment from 'moment'
 
 export default function MainPage (props) {
   const meteoAreaData = weatherData(props) // Get data and mount into structure
   const meteoAreaDataEntries = Object.entries(meteoAreaData.current)
-  // console.log(meteoAreaDataEntries)
+  meteoAreaDataEntries.pop() // Dont want details element which is the last
 
-  // Build view
+  // Build data view
   const buildWeatherTable = (entries) => {
-    return entries.map((entry, index, a) => {
-      // console.log(typeof (entry))
-      // console.log(typeof (entry[0]))
-      // console.log(typeof (entry[1]))
-      console.log(entry[0])
-      console.log(index)
-      console.log(a)
+    return entries.map((entry, index) => {
       return (
         <tr key={index}>
-          <th key={index}> {entry[0]} </th>
-          <td key={index}> {entry[1]} </td>
+          <th> {entry[0]} </th>
+          <td> {entry[1]} </td>
         </tr>
       )
     })
   }
 
-  // Mantener el aplicativo actualizad
+  // TODO Mantener el aplicativo actualizado
 
   return (
     <table className='currentWeatherData' id='currentWeatherData'>
