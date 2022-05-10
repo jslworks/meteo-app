@@ -11,7 +11,6 @@ import Maps from './components/Maps'
 import Alerts from './components/Alerts'
 import AboutUs from './components/AboutUs'
 import LocGoogleMaps from './components/LocGoogleMaps'
-import NoLoc from './components/NoLoc'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -40,11 +39,10 @@ const App = () => {
     <BrowserRouter>
       <header>
         <Link id='logo' to='/'><img src={logo} alt='logo' /></Link>
-        <Location />
         <Menu />
       </header>
       <Routes>
-        <Route path='/' element={(coords && loc && currMeteo) ? <MainPage /> : <NoLoc />} />
+        <Route path='/' element={(coords && loc && currMeteo) ? <MainPage loc={loc} currMeteo={currMeteo} /> : <Location />} />
         <Route path='/locationt' element={<LocGoogleMaps />} />
         <Route path='/maps' element={coords ? <Maps coords={coords} /> : null} />
         <Route path='/alerts' element={<Alerts />} />
