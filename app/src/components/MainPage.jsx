@@ -4,8 +4,7 @@ export default function MainPage (props) {
   const meteoAreaData = weatherData(props) // Get data and mount into structure
   const currentMeteoData = Object.entries(meteoAreaData.current)
   currentMeteoData.pop() // Dont want details element which is the last
-  // console.log(props)
-  // console.log(meteoAreaData)
+
   // Build data view
   const buildWeatherTable = (entries) => {
     return entries.map((entry, index) => {
@@ -21,16 +20,36 @@ export default function MainPage (props) {
   // TODO Mantener el aplicativo actualizado
 
   return (
-    <table className='currentWeatherData' id='currentWeatherData'>
-      <tbody>
-        {buildWeatherTable(currentMeteoData)}
-      </tbody>
-    </table>
+    <>
+      <h3>{showLocation(meteoAreaData.location)}</h3>
+      <p>{showDate()}</p>
+      <p />
+      <table className='currentWeatherData' id='currentWeatherData'>
+        <tbody>
+          {buildWeatherTable(currentMeteoData)}
+        </tbody>
+      </table>
+    </>
   )
 }
 
+const showLocation = (locationData) => {
+  return locationData.name + ', ' + locationData.country
+}
+
+const showDate = () => {
+  const allDate = moment().toObject()
+  moment.locale('en')
+  return moment(allDate).format('dddd') + ', ' +
+    allDate.date + ' ' +
+    moment(allDate).format('MMMM') + ' ' +
+    moment(allDate).format('YYYY') + ' - ' +
+    moment(allDate).format('HH:mm')
+}
+
 const weatherData = (data) => {
-  const momentDate = moment().toObject()
+  // const momentDate = moment().toObject()
+  // console.log(momentDate)
 
   const location = data.loc
   const currMeteo = data.currMeteo
@@ -42,13 +61,13 @@ const weatherData = (data) => {
   const hourly = data.currMeteo.hourly
 
   return {
-    time: {
-      year: momentDate.years,
-      month: momentDate.months,
-      day: momentDate.date,
-      hour: momentDate.hours,
-      minutes: momentDate.minutes
-    },
+    // time: {
+    //   year: momentDate.years,
+    //   month: momentDate.months,
+    //   day: momentDate.date,
+    //   hour: momentDate.hours,
+    //   minutes: momentDate.minutes
+    // },
     location: {
       country: location.country,
       name: location.name,
