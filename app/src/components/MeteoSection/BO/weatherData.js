@@ -17,10 +17,7 @@ export default function weatherData (data) {
       lon: location.lon
     },
     current: {
-      icon: <img
-        src={'http://openweathermap.org/img/wn/' +
-          current.weather[0].icon + '.png'} alt='weather-icon'
-            />,
+      icon: current.weather[0].icon,
       description: current.weather[0].description,
       temperature: current.temp,
       // Basic data
@@ -42,10 +39,7 @@ export default function weatherData (data) {
     },
     daily: {
       1: {
-        icon: <img
-          src={'http://openweathermap.org/img/wn/' +
-            daily[1].weather[0].icon + '.png'} alt='weather-icon'
-              />,
+        icon: daily[1].weather[0].icon,
         description: daily[1].weather[0].description,
         temperature: averageTemperature(
           daily[1].temp.max,
@@ -69,10 +63,8 @@ export default function weatherData (data) {
         }
       },
       2: {
-        icon: <img
-          src={'http://openweathermap.org/img/wn/' +
-            daily[2].weather[0].icon + '.png'} alt='weather-icon'
-              />,
+        icon:
+            daily[2].weather[0].icon,
         description: daily[2].weather[0].description,
         temperature: averageTemperature(
           daily[2].temp.max,
@@ -96,10 +88,7 @@ export default function weatherData (data) {
         }
       },
       3: {
-        icon: <img
-          src={'http://openweathermap.org/img/wn/' +
-            daily[3].weather[0].icon + '.png'} alt='weather-icon'
-              />,
+        icon: daily[3].weather[0].icon,
         description: daily[3].weather[0].description,
         temperature: averageTemperature(
           daily[3].temp.max,
@@ -123,10 +112,8 @@ export default function weatherData (data) {
         }
       },
       4: {
-        icon: <img
-          src={'http://openweathermap.org/img/wn/' +
-            daily[4].weather[0].icon + '.png'} alt='weather-icon'
-              />,
+        icon:
+            daily[4].weather[0].icon,
         description: daily[4].weather[0].description,
         temperature: averageTemperature(
           daily[4].temp.max,
