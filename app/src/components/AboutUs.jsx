@@ -1,16 +1,28 @@
 import '../styles/AboutUs.css'
+import githubIcon from '../assets/githubLogo.png'
 
 /**
- * AÒadir GH
- * AÒadir links de APIs y/o las cosas m·s
+ * A√±adir links de APIs y/o las cosas m√°s
  * importantes que hayamos usado en el footer
  * Style
  */
+
 export default function AboutUs () {
   return (
     <>
-      <h1>Sobre Nosotros</h1>
-      <footer />
+      <div id='containerAboutUs'>
+        <h1>Sobre Nosotros</h1><br />
+        <p>Este es un proyecto de fin de estudios de Grado Superior en el IES Badia.</p>
+      </div>
+      <footer>
+        <a id='githubIcon' href='https://github.com/CyohProject/meteo-app'><img src={githubIcon} alt='githubIcon' /></a>
+        <a id='githubLink' href='https://github.com/CyohProject/meteo-app'>GitHub</a>
+        {/* <div id='footerText'>
+          <p>Lorenzo Garc√≠a</p>
+          <p>Oriol Salvador</p>
+          <p>Jose Mar√≠a Molero</p>
+        </div> */}
+      </footer>
     </>
   )
 }
