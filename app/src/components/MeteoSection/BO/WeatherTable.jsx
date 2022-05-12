@@ -1,14 +1,12 @@
 import weatherData from './weatherData'
 const moment = require('moment')
-const { Box, Grid } = require('@mui/material')
+const { Divider, Box, Grid } = require('@mui/material')
 
 export default function WeatherTable (props) {
   const meteoAreaData = weatherData(props.APIweatherData) // Get data and mount into structure
-  const currentMeteoData = Object.entries(meteoAreaData.current)
-  currentMeteoData.pop() // Dont want details element which is the last
-  //   Creo componente tabla de datos tiempo aparte Paso props de otra manera
+  const { location, current } = meteoAreaData
 
-  moment.locale('en')
+  moment.locale('en') // Stablish english for APIweatherData through moment.js
 
   return (
     <>
@@ -21,15 +19,15 @@ export default function WeatherTable (props) {
         en vez de 2 apiladas para pantallas mas pequeñas
         */}
         <Grid item xs={12}>
-          {showLocation(meteoAreaData.location)}
+          {showLocation(location)}
           {showDate()}
         </Grid>
         <Grid container m={3}>
           <Grid item xs={4}>
-            {weatherAndTemperature(meteoAreaData.current)}
+            {weatherAndTemperature(current)}
           </Grid>
           <Grid item xs={8}>
-            {currentBasicWeather()}
+            {currentBasicWeather(current)}
           </Grid>
         </Grid>
       </Grid>
@@ -86,32 +84,77 @@ const weatherAndTemperature = (current) => {
   )
 }
 
-const currentBasicWeather = () => {
+const currentBasicWeather = (current) => {
   return (
     <Grid container>
       <Grid item xs={6}>
-        <Box>
-          columnas1-1
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.maxTemperature} ºC+ / {current.minTemperature} ºC-
         </Box>
-        <Box>
-          columna1-2
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.humidity} %
         </Box>
-        <Box>
-          columnas1-3
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.pressure} mb
         </Box>
+        <Divider />
       </Grid>
       <Grid item xs={6}>
-        <Box>
-          columnas2-1
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.wind_direction} / {current.wind_speed} km/h
+          {/* {windDirIcon(current.wind_direction)} / {current.wind_speed} km/h */}
         </Box>
-        <Box>
-          columnas2-2
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.sunrise} /
         </Box>
-        <Box>
-          columnas2-3
+        <Divider />
+        <Box sx={{
+          height: '1.7em',
+          display: 'center'
+        }}
+        >
+          {current.sunset} \
         </Box>
+        <Divider />
       </Grid>
     </Grid>
-
   )
 }
+
+// const windDirIcon = (wind_direction) => {
+//   const E = 90
+//   const SE = 45
+//   const S = 0
+//   const Sw = 315
+//   const W = 270
+//   const NW = 225
+//   const N = 180
+//   const NE = 135
+
+//   if(wind_direction > )
+// }
