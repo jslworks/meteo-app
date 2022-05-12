@@ -1,9 +1,6 @@
 const moment = require('moment')
 
 export default function weatherData (data) {
-  // const momentDate = moment().toObject()
-  // console.log(momentDate)
-
   const location = data.loc
   const currMeteo = data.currMeteo
   const current = data.currMeteo.current
