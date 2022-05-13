@@ -18,15 +18,16 @@ export default function WeatherTable (props) {
         cual haria que pantallas mas grandes salen 2 celdas en paralelo
         en vez de 2 apiladas para pantallas mas pequeñas
         */}
-        <Grid item xs={12}>
+        <Grid pl={2} pt={1} item xs={11}>
           {showLocation(location)}
           {showDate()}
         </Grid>
-        <Grid container m={3}>
+        <Grid container m={4}>
           <Grid item xs={4}>
             {weatherAndTemperature(current)}
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={1} />
+          <Grid item xs={7}>
             {currentBasicWeather(current)}
           </Grid>
         </Grid>
@@ -38,7 +39,7 @@ export default function WeatherTable (props) {
 const showLocation = (locationData) => {
   return (
     <Box
-      sx={{ fontSize: '1.6em', fontWeight: 'bold' }}
+      sx={{ fontSize: '1.55em', fontWeight: 'bold' }}
     >
       {locationData.name}, {locationData.country}
     </Box>
@@ -49,7 +50,7 @@ const showDate = () => {
   const allDate = moment().toObject()
   return (
     <Box
-      sx={{ fontSize: '1em' }}
+      sx={{ fontSize: '1em' }} pl={1} pt={1}
     >
       {moment(allDate).format('dddd') + ', ' +
           allDate.date + ' ' +
@@ -64,19 +65,22 @@ const weatherAndTemperature = (current) => {
   return (
     <>
       <Grid container>
-        <Grid item xs={4}>
+        <Grid item xs={7}>
+          <Box
+            sx={{ fontWeight: 'bold', fontSize: '2.3em', alignContent: 'center' }}
+          > {Math.round(current.temperature)}<span style={{ fontWeight: 'normal', margin: '0.1em', fontSize: '0.4em' }}> ºC </span>
+          </Box>
+        </Grid>
+        <Grid item xs={5}>
           <Box>
             <img
               src={'http://openweathermap.org/img/wn/' +
                 current.icon + '.png'} alt='weather-icon'
             />
           </Box>
-          <Box> {current.description} </Box>
-        </Grid>
-        <Grid item xs={8}>
           <Box
-            sx={{ fontSize: '3em' }}
-          > {Math.round(current.temperature)} ºC
+            sx={{ fontSize: '0.8em' }}
+          > {current.description}
           </Box>
         </Grid>
       </Grid>
@@ -91,7 +95,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.maxTemperature} ºC+ / {current.minTemperature} ºC-
@@ -99,7 +104,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.humidity} %
@@ -107,7 +113,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.pressure} mb
@@ -118,7 +125,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.wind_direction} / {current.wind_speed} km/h
@@ -127,7 +135,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.sunrise} /
@@ -135,7 +144,8 @@ const currentBasicWeather = (current) => {
         <Divider />
         <Box sx={{
           height: '1.7em',
-          display: 'center'
+          display: 'center',
+          fontSize: '0.9em'
         }}
         >
           {current.sunset} \
