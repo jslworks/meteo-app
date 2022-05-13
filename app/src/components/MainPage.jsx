@@ -18,8 +18,10 @@ export default function MainPage (props) {
           <Box
             sx={{ bgcolor: '#F2E1EE' }}
           >
-            {/* Hay que adaptar rutas, entre App y el directorio actual hay un salto. Css, por ejemplo, no va aquí
-              <Comments /> */}
+            {/*
+            <Comments />
+            Hay que adaptar rutas, entre App y el directorio actual
+            hay un salto. Css, por ejemplo, no va aquí */}
           </Box>
         </Grid>
       </Grid>

@@ -20,7 +20,7 @@ const App = () => {
   const coords = useSelector((state) => state.location.currCoords)
   const loc = useSelector((state) => state.location.loc)
   const currMeteo = useSelector((state) => state.location.currMeteo)
-  const APIweatherData = { loc, currMeteo }
+
   /* We need a 2nd useEffect, splitting getting coords and
   getting location Info to avoid infinite rerendering if we
   dispatch both together */
@@ -45,7 +45,7 @@ const App = () => {
         <Menu />
       </header>
       <Routes>
-        <Route path='/' element={(coords && loc && currMeteo) ? <MainPage APIweatherData={APIweatherData} /> : <NoLoc />} />
+        <Route path='/' element={(coords && loc && currMeteo) ? <MainPage APIweatherData={{ loc, currMeteo }} /> : <NoLoc />} />
         <Route path='/locationt' element={<LocGoogleMaps />} />
         <Route path='/maps' element={coords ? <Maps coords={coords} /> : null} />
         <Route path='/alerts' element={<Alerts />} />
