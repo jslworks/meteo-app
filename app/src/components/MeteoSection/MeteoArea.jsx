@@ -1,7 +1,7 @@
 import WeatherTable from './BO/WeatherTable'
 
 /** TODO
- * Navbar con detalles, previsión horaria, previsión semanal
+ * Navbar con detalles, previsiÃ³n horaria, previsiÃ³n semanal
  */
 export default function MeteoArea (props) {
   return <WeatherTable APIweatherData={props.APIweatherData} />

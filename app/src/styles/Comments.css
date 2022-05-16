@@ -7,7 +7,9 @@
 }
 
 #commentContainer {
-    height: 75vh;
+    height: 72vh;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #sendButton {
@@ -27,6 +29,10 @@
 
 #commentInput:focus {
     outline: none;
+}
+
+#commentIcon {
+    margin-top: 2px;
 }
 
 .liComments {

@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import '../styles/Comments.css'
 import { IoIosSend } from 'react-icons/io'
+import { GoComment } from 'react-icons/go'
 
 /** TODO
- * Enlazar cada comentario con la localidad del usuario que lo escribió (Cataluña, por ejemplo)
+ * Enlazar cada comentario con la localidad del usuario que
+ * lo escribiÃ³ (CataluÃ±a, por ejemplo)
  * Usuario logeado o sin logear
  * Guardar los comentarios
  * Mostrar solamente los comentarios del estado de la localidad establecida
+ * Hacer que la todo el contendor sea mÃ¡s responsive (en MainPage no encaja
+ * bien y crea scroll por lo grande que es)
  */
 
 export default function Comments () {
@@ -30,8 +34,8 @@ export default function Comments () {
     }
   }
 
-  const calcTime = (e) => {
-    const time = moment(currentTime).from(e)
+  const calcTime = (postDate) => {
+    const time = moment(currentTime).from(postDate)
     return time
   }
 
@@ -43,7 +47,10 @@ export default function Comments () {
 
   return (
     <>
-      <h1>Comentarios</h1>
+      <h1>
+        <GoComment id='commentIcon' />
+        Comentarios
+      </h1>
       <div id='commentContainer'>
         <CommentList data={comments} />
       </div>

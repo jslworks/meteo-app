@@ -14,13 +14,6 @@ export default function WeatherTable (props) {
   return (
     <>
       <Grid container>
-        {/*
-      existen propiedades xs, sm, md....
-        xs=12 usamos los 12 espacios disponibles para generico
-        Si queremos hacer un poco de responsive, podriamos poner sm=6 lo
-        cual haria que pantallas mas grandes salen 2 celdas en paralelo
-        en vez de 2 apiladas para pantallas mas pequeñas
-        */}
         <Grid pl={2} pt={1} item xs={11}>
           {showLocation(location)}
           {showDate()}
@@ -158,16 +151,3 @@ const currentBasicWeather = (current) => {
     </Grid>
   )
 }
-
-// const windDirIcon = (wind_direction) => {
-//   const E = 90
-//   const SE = 45
-//   const S = 0
-//   const Sw = 315
-//   const W = 270
-//   const NW = 225
-//   const N = 180
-//   const NE = 135
-
-//   if(wind_direction > )
-// }
