@@ -16,7 +16,7 @@ const { Divider, Box, Grid } = require('@mui/material')
 /** TODO
  * Mejorar inidicaciones de valores (para entender mejor qué es cada valor)
  */
-export default function WeatherTable (props) {
+export default function CurrMeteo (props) {
   const meteoAreaData = props.meteoAreaData
   const { location, current } = meteoAreaData
 
