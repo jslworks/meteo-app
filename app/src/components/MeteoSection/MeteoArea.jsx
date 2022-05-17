@@ -25,7 +25,7 @@ export default function MeteoArea (props) {
 }
 
 const MeteoTabbar = (props) => {
-  const { details } = props.meteoAreaData
+  const { details } = props.meteoAreaData.current
   const meteoTabIndex = {
     details: 0,
     daily: 1,
