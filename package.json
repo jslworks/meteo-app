@@ -15,8 +15,8 @@
   },
   "scripts": {
     "lint": "standard .\\app .\\api",
-    "front": "cd app/ && yarn start",
-    "back": "cd api/ && yarn start"
+    "front": "cd app && yarn start",
+    "back": "cd api && yarn start"
   },
   "devDependencies": {
     "standard": "17.0.0"
