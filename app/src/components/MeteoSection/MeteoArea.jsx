@@ -14,11 +14,14 @@ import { Ri24HoursLine } from 'react-icons/ri'
 import Daily from './BO/Daily'
 const { Box, Tabs, Tab } = require('@mui/material')
 
-/** TODO
- * Navbar con detalles, previsión horaria, previsión semanal
+/**
+ * Represents area that displays all weather info in the location given inside props
+ * @param {*} props
+ * @returns Current Meteo and MeteoTabbar (that contains detailed, hourly and daily data)
  */
 export default function MeteoArea (props) {
-  const meteoAreaData = weatherData(props.APIweatherData) // Parse rcv api object into personal local object
+  // Parse received 'api object' into personal local object
+  const meteoAreaData = weatherData(props.APIweatherData)
 
   return (
     <>
@@ -28,6 +31,11 @@ export default function MeteoArea (props) {
   )
 }
 
+/**
+ *
+ * @param {*} props
+ * @returns
+ */
 const MeteoTabbar = (props) => {
   const { details } = props.meteoAreaData.current
   const { daily, hourly } = props.meteoAreaData
