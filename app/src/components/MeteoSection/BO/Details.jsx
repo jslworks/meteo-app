@@ -1,11 +1,6 @@
-import {
-  // Moonphase
-  WiMoonAltNew, WiMoonAltWaxingCrescent3,
-  WiMoonFirstQuarter, WiMoonAltWaxingGibbous3,
-  WiMoonAltFull, WiMoonAltWaningGibbous3,
-  WiMoonThirdQuarter, WiMoonAltWaningCrescent3
-  , WiHumidity
-} from 'react-icons/wi'
+import { showMoonPhase } from './tools'
+
+import { WiHumidity } from 'react-icons/wi'
 import { BsFillCloudyFill } from 'react-icons/bs'
 import { boxStyle, t } from '../../../styles/Box'
 
@@ -58,31 +53,4 @@ const showDetailItem = (item, details) => {
       break
   }
   return ''
-}
-
-const showMoonPhase = (moonphase) => {
-  if (moonphase === 0) { // New moon
-    return <WiMoonAltNew />
-  }
-  if (moonphase > 0 && moonphase < 0.25) { // Waxing crescent
-    return <WiMoonAltWaxingCrescent3 />
-  }
-  if (moonphase === 0.25) { // First quarter
-    return <WiMoonFirstQuarter />
-  }
-  if (moonphase > 0.25 && moonphase < 0.5) { // Waxing gibbous
-    return <WiMoonAltWaxingGibbous3 />
-  }
-  if (moonphase === 0.5) { // Full moon
-    return <WiMoonAltFull />
-  }
-  if (moonphase > 0.5 && moonphase < 0.75) { // Waning gibbous
-    return <WiMoonAltWaningGibbous3 />
-  }
-  if (moonphase === 0.75) { // Last quarter
-    return <WiMoonThirdQuarter />
-  }
-  if (moonphase > 0.75 && moonphase <= 1) { // Waning crescent
-    return <WiMoonAltWaningCrescent3 />
-  }
 }

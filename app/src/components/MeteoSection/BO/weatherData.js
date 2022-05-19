@@ -107,13 +107,13 @@ const buildDaily = (daily) => {
       sunset: showSunOnOff(day.sunset),
       wind_speed: day.wind_speed,
       wind_direction: day.wind_deg,
+      moonPhase: day.moon_phase,
       details: { // Detailed data
         clouds_intensity: day.clouds,
         // visibility: '',
         // dew_point: '',
         feels_like: calculateFeelsLike(daily, 7),
-        uvi: day.uvi,
-        moonPhase: day.moon_phase
+        uvi: day.uvi
       }
     }
   })

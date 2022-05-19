@@ -4,6 +4,11 @@ import {
   WiDirectionRight, WiDirectionDownRight,
   WiDirectionDown, WiDirectionDownLeft,
   WiDirectionLeft, WiDirectionUpLeft,
+  // Moonphase
+  WiMoonAltNew, WiMoonAltWaxingCrescent3,
+  WiMoonFirstQuarter, WiMoonAltWaxingGibbous3,
+  WiMoonAltFull, WiMoonAltWaningGibbous3,
+  WiMoonThirdQuarter, WiMoonAltWaningCrescent3,
   // Weather properties icons
   WiStrongWind, WiThermometer
 } from 'react-icons/wi'
@@ -110,4 +115,36 @@ export const showWindDirection = (direction) => {
   if (direction > 22.5) return <WiDirectionUpRight size={size} />
 
   return <WiDirectionUpRight size={size} />
+}
+
+/**
+ * Show moon phase icon
+ * @param {*} moonphase
+ * @returns moonphase icon
+ */
+export const showMoonPhase = (moonphase) => {
+  if (moonphase === 0) { // New moon
+    return <WiMoonAltNew />
+  }
+  if (moonphase > 0 && moonphase < 0.25) { // Waxing crescent
+    return <WiMoonAltWaxingCrescent3 />
+  }
+  if (moonphase === 0.25) { // First quarter
+    return <WiMoonFirstQuarter />
+  }
+  if (moonphase > 0.25 && moonphase < 0.5) { // Waxing gibbous
+    return <WiMoonAltWaxingGibbous3 />
+  }
+  if (moonphase === 0.5) { // Full moon
+    return <WiMoonAltFull />
+  }
+  if (moonphase > 0.5 && moonphase < 0.75) { // Waning gibbous
+    return <WiMoonAltWaningGibbous3 />
+  }
+  if (moonphase === 0.75) { // Last quarter
+    return <WiMoonThirdQuarter />
+  }
+  if (moonphase > 0.75 && moonphase <= 1) { // Waning crescent
+    return <WiMoonAltWaningCrescent3 />
+  }
 }
