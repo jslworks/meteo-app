@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import '../styles/Comments.css'
+import '../styles/CommentsMain.css'
 import { IoIosSend } from 'react-icons/io'
 import { FaRegComments } from 'react-icons/fa'
 const { Grid } = require('@mui/material')
@@ -40,8 +40,8 @@ export default function Comments () {
     const commentsList = props.data.map((comment, i) => {
       return (
         <li key={i}>
-          <ul className='liComments'>
-            <li className='liTime'>{timeFrom}</li>
+          <ul className='mainliComments'>
+            <li className='mainliTime'>{timeFrom}</li>
             <li>{comment}</li>
           </ul>
         </li>
@@ -49,36 +49,36 @@ export default function Comments () {
     })
 
     if (commentsList.length < 1) {
-      return <p id='no-comments'>There are no comments at your location</p>
+      return <p id='mainno-comments'>There are no comments at your location</p>
     } else {
       return (
-        <ul className='ulComments'>{commentsList}</ul>
+        <ul className='mainulComments'>{commentsList}</ul>
       )
     }
   }
 
   return (
     <>
-      <Grid container direction='column'>
-        <Grid container id='topContainer'>
-          <h1 className='comments-title'>
-            <FaRegComments id='commentIcon' />
+      <Grid container direction='column' id='mainParentContainer'>
+        <Grid container id='maintopContainer'>
+          <h1 className='maincomments-title'>
+            <FaRegComments id='maincommentIcon' />
             Comments
           </h1>
-          <Grid item id='commentContainer'>
+          <Grid item id='maincommentContainer'>
             <MapComments data={comments} />
           </Grid>
         </Grid>
-        <form onSubmit={sendComment} id='commentForm'>
+        <form onSubmit={sendComment} id='maincommentForm'>
           <input
             type='text'
             value={singleComment}
             name='comment'
             placeholder='Type your comment'
-            id='commentInput'
+            id='maincommentInput'
             onChange={({ target }) => setSingleComments(target.value)}
           />
-          <Link to='#' onClick={sendComment} id='sendButton'>
+          <Link to='#' onClick={sendComment} id='mainsendButton'>
             <IoIosSend size={30} color='aqua' />
           </Link>
         </form>

@@ -1,28 +1,24 @@
-#commentForm {
-    width: 90%; 
-    display: flex;
-    align-items: center;
-    padding-left: 10%;
-    bottom: 45px;
-    position: absolute;
+#mainParentContainer {
+    height: 100%;
+    justify-content: space-between;
 }
 
+#maincommentForm {
+    display: flex;
+    align-items: center;
+}
 
-#commentContainer {
-    max-height: 64vh;
+#maincommentContainer {
+    max-height: 300px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-#topContainer {
-    display: grid;
-}
-
-#sendButton {
+#mainsendButton {
     margin-left: 2em;
 }
 
-#commentInput {
+#maincommentInput {
     width: 100%;
     border-top: none;
     border-left: none;
@@ -33,33 +29,37 @@
     font-size: 18px;
 }
 
-#commentInput:focus {
+#maincommentInput:focus {
     outline: none;
 }
 
-#commentIcon {
+#maincommentIcon {
     margin-top: 2px;
     padding-right: 5px;
 }
 
-.ulComments {
+.mainulComments {
     transform: rotate(180deg);
 }
 
-.liComments {
+.mainliComments {
     list-style-type: none;
     padding: 3em;
     transform: rotate(-180deg);
 }
 
-.comments-title {
+#maintopContainer {
+    display: grid;
+}
+
+.maincomments-title {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 5px;
 }
 
-#no-comments {
+#mainno-comments {
     margin: auto;
     margin-top: revert;
     border-style: solid;
@@ -68,7 +68,7 @@
     padding: 7px;
 }
 
-.liTime {
+.mainliTime {
     font-size: 12px;
     color: #C8C1BA;
 }
