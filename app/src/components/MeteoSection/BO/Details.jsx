@@ -6,6 +6,11 @@ import { boxStyle, t } from '../../../styles/Box'
 
 const { Divider, Box, Grid } = require('@mui/material')
 
+/**
+ * Represents detailed info from current weather data
+ * @param {*} props receive details object from weatherData.current
+ * @returns Grid with details info
+ */
 export default function Details (props) {
   const { details } = props
   return (
@@ -18,8 +23,12 @@ export default function Details (props) {
   )
 }
 
-// Detailed elements
-function showDetailsData (details) {
+/**
+ * Receive details object and build a detailed weather for tab view
+ * @param {*} details details object from weatherData.current
+ * @returns detailed weather view
+ */
+const showDetailsData = (details) => {
   return Object.keys(details).map((item, index) => {
     return (
       <div key={index}>
@@ -32,7 +41,12 @@ function showDetailsData (details) {
   })
 }
 
-// const showDetail = (item, details) => {
+/**
+ * Receive an index and details object and build a detailed weather row
+ * @param {*} item name of row
+ * @param {*} details details object from weatherData.current
+ * @returns detailed info row
+ */
 const showDetailItem = (item, details) => {
   switch (item) {
     case 'clouds_intensity':
