@@ -7,8 +7,10 @@ import {
 const moment = require('moment')
 const { Grid } = require('@mui/material')
 
-/** TODO
- * Mejorar inidicaciones de valores (para entender mejor qué es cada valor)
+/**
+ * Displays current weather info, like location, temperature, weather icon...
+ * @param {*} props weather data to obtain current and location data
+ * @returns
  */
 export default function CurrMeteo (props) {
   const meteoAreaData = props.meteoAreaData

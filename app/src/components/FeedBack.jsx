@@ -1,12 +1,16 @@
 
-import Alerts from './Alerts'
-import CommentsMain from './CommentsMain'
+import { Alerts, CommentsMain, TabPanel } from '.'
+
 import { useState } from 'react'
-import TabPanel from './TabPanel'
 import { FiAlertTriangle } from 'react-icons/fi'
 import { GoComment } from 'react-icons/go'
 const { Box, Tabs, Tab } = require('@mui/material')
 
+/**
+ * Represents an area to get comunication system-user and user-user.
+ * It have 2 sections: alerts and comments
+ * @returns
+ */
 export default function FeedBack () {
   const [feedTab, setFeedTab] = useState(0)
 
