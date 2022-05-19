@@ -1,8 +1,9 @@
 
-import {
-  weatherData,
-  CurrMeteo, Details, Hourly, Daily
-} from './BO/'
+import weatherData from './BO/weatherData'
+import CurrMeteo from './BO/CurrMeteo'
+import Details from './BO/Details'
+import Hourly from './BO/Hourly'
+import Daily from './BO/Daily'
 import TabPanel from '../TabPanel'
 
 import { useState } from 'react'

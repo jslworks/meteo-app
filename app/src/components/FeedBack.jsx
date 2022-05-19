@@ -1,5 +1,7 @@
 
-import { Alerts, CommentsMain, TabPanel } from '.'
+import Alerts from './Alerts'
+import CommentsMain from './CommentsMain'
+import TabPanel from './TabPanel'
 
 import { useState } from 'react'
 import { FiAlertTriangle } from 'react-icons/fi'
