@@ -92,34 +92,62 @@ export const weatherAndTemperature = (current) => {
  * @returns Grid structure with current weather data
  */
 export const currentBasicWeather = (current) => {
-  return (
-    <Grid container>
-      <Grid item xs={6}>
-        <Divider />
-        <Box sx={boxStyle}>
-          <WiThermometer color='red' /> {current.maxTemperature} ºC
-        </Box>
-        <Divider />
-        <Box sx={boxStyle}> <BsCloudRain /> {t()} {current.rainProbability} % </Box>
-        <Divider />
-        <Box sx={boxStyle}> <BsSunrise /> {t()} {current.sunrise} </Box>
-        <Divider />
+  if (width < 834) {
+    return (
+      <Grid container>
+        <Grid item xs={12}>
+          <Divider />
+          <Box sx={boxStyle}>
+            <WiThermometer color='red' /> {current.maxTemperature} ºC
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsCloudRain /> {t()} {current.rainProbability} % </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsSunrise /> {t()} {current.sunrise} </Box>
+          <Divider />
+          <Box sx={boxStyle}>
+            <WiThermometer color='blue' />{current.minTemperature} ºC
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}>
+            {current.wind_speed} km/h <WiStrongWind />{showWindDirection(current.wind_direction)}
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsSunsetFill /> {t()} {current.sunset} </Box>
+          <Divider />
+        </Grid>
       </Grid>
-      <Grid item xs={6}>
-        <Divider />
-        <Box sx={boxStyle}>
-          <WiThermometer color='blue' />{current.minTemperature} ºC
-        </Box>
-        <Divider />
-        <Box sx={boxStyle}>
-          {current.wind_speed} km/h <WiStrongWind />{showWindDirection(current.wind_direction)}
-        </Box>
-        <Divider />
-        <Box sx={boxStyle}> <BsSunsetFill /> {t()} {current.sunset} </Box>
-        <Divider />
+    )
+  } else {
+    return (
+      <Grid container>
+        <Grid item xs={6}>
+          <Divider />
+          <Box sx={boxStyle}>
+            <WiThermometer color='red' /> {current.maxTemperature} ºC
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsCloudRain /> {t()} {current.rainProbability} % </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsSunrise /> {t()} {current.sunrise} </Box>
+          <Divider />
+        </Grid>
+        <Grid item xs={6}>
+          <Divider />
+          <Box sx={boxStyle}>
+            <WiThermometer color='blue' />{current.minTemperature} ºC
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}>
+            {current.wind_speed} km/h <WiStrongWind />{showWindDirection(current.wind_direction)}
+          </Box>
+          <Divider />
+          <Box sx={boxStyle}> <BsSunsetFill /> {t()} {current.sunset} </Box>
+          <Divider />
+        </Grid>
       </Grid>
-    </Grid>
-  )
+    )
+  }
 }
 
 /**
@@ -172,3 +200,7 @@ export const showMoonPhase = (moonphase) => {
     return <WiMoonAltWaningCrescent3 />
   }
 }
+
+const width = window.screen.width
+
+export const { screenWidth } = width

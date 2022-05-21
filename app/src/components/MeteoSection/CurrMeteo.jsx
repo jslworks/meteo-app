@@ -2,7 +2,8 @@ import {
   showLocation,
   showDate,
   weatherAndTemperature,
-  currentBasicWeather
+  currentBasicWeather,
+  screenWidth
 } from './tools'
 const moment = require('moment')
 const { Grid } = require('@mui/material')
@@ -18,19 +19,26 @@ export default function CurrMeteo (props) {
 
   moment.locale('en') // Stablish english for APIweatherData through moment.js
 
+  let gridSpaceXS
+  if (screenWidth < 834) {
+    gridSpaceXS = [11, 7, 1, 4]
+  } else {
+    gridSpaceXS = [11, 4, 1, 7]
+  }
+
   return (
     <>
       <Grid container id='currMeteoContainer'>
-        <Grid pl={2} pt={1} item xs={11}>
+        <Grid pl={2} pt={1} item xs={gridSpaceXS[0]}>
           {showLocation(location)}
           {showDate()}
         </Grid>
         <Grid container m={4}>
-          <Grid item xs={4}>
+          <Grid item xs={gridSpaceXS[1]}>
             {weatherAndTemperature(current)}
           </Grid>
-          <Grid item xs={1} />
-          <Grid item xs={7}>
+          <Grid item xs={gridSpaceXS[2]} />
+          <Grid item xs={gridSpaceXS[3]}>
             {currentBasicWeather(current)}
           </Grid>
         </Grid>
