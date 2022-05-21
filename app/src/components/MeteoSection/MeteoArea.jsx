@@ -1,10 +1,10 @@
-
-import weatherData from './BO/weatherData'
-import CurrMeteo from './BO/CurrMeteo'
-import Details from './BO/Details'
-import Hourly from './BO/Hourly'
-import Daily from './BO/Daily'
+import weatherData from './weatherData'
+import CurrMeteo from './CurrMeteo'
+import Details from './Details'
+import Hourly from './Hourly'
+import Daily from './Daily'
 import TabPanel from '../TabPanel'
+import '../../styles/Meteo.css'
 
 import { useState } from 'react'
 import { BiDetail } from 'react-icons/bi'
@@ -25,10 +25,10 @@ export default function MeteoArea (props) {
   const meteoAreaData = weatherData(props.APIweatherData)
 
   return (
-    <>
+    <Box>
       <CurrMeteo meteoAreaData={meteoAreaData} />
       <MeteoTabbar meteoAreaData={meteoAreaData} />
-    </>
+    </Box>
   )
 }
 
@@ -57,22 +57,28 @@ const MeteoTabbar = (props) => {
 
   return (
     <>
-      <Box position='relative' sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box className='mainTabHeader' position='relative' sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={meteoTab} onChange={handleMeteoTabs}>
           <Tab label={<span id='DetailsTab'><BiDetail color='black' /> Details </span>} />
-          <Tab label={<span id='DetailsTab'><Ri24HoursLine color='darkgreen' /> Hourly </span>} />
-          <Tab label={<span id='HourlyTab'><BsCalendar3WeekFill color='brown' /> Daily </span>} />
+          <Tab label={<span id='HourlyTab'><Ri24HoursLine color='darkgreen' /> Hourly </span>} />
+          <Tab label={<span id='DailyTab'><BsCalendar3WeekFill color='brown' /> Daily </span>} />
         </Tabs>
       </Box>
-      <TabPanel value={meteoTab} index={meteoTabIndex.details}>
-        <Details details={details} />
-      </TabPanel>
-      <TabPanel value={meteoTab} index={meteoTabIndex.hourly}>
-        <Hourly hourly={hourly} />
-      </TabPanel>
-      <TabPanel value={meteoTab} index={meteoTabIndex.daily}>
-        <Daily daily={daily} />
-      </TabPanel>
+      <Box className='boxFuturePrev'>
+        <TabPanel value={meteoTab} index={meteoTabIndex.details}>
+          <Details details={details} />
+        </TabPanel>
+      </Box>
+      <Box className='boxFuturePrev'>
+        <TabPanel value={meteoTab} index={meteoTabIndex.hourly}>
+          <Hourly hourly={hourly} />
+        </TabPanel>
+      </Box>
+      <Box className='boxFuturePrev'>
+        <TabPanel value={meteoTab} index={meteoTabIndex.daily}>
+          <Daily daily={daily} />
+        </TabPanel>
+      </Box>
     </>
   )
 }

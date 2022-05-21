@@ -15,11 +15,16 @@ import {
 import {
   BsSunrise, BsSunsetFill, BsCloudRain
 } from 'react-icons/bs'
-import { boxStyle, t } from '../../../styles/Box'
+import { boxStyle, t } from '../../styles/Box'
 
 const moment = require('moment')
 const { Divider, Box, Grid } = require('@mui/material')
 
+/**
+ * Show location info like name and country
+ * @param {*} locationData location data object
+ * @returns location name and country
+ */
 export const showLocation = (locationData) => {
   return (
     <Box
@@ -30,6 +35,10 @@ export const showLocation = (locationData) => {
   )
 }
 
+/**
+ * Get date with moment.js and parse into custom date format
+ * @returns date
+ */
 export const showDate = () => {
   const allDate = moment().toObject()
   return (
@@ -45,6 +54,11 @@ export const showDate = () => {
   )
 }
 
+/**
+ * Show current temperature, weather icon and weather description
+ * @param {*} current object with current data and its details
+ * @returns view temperature, weather icon and weather description
+ */
 export const weatherAndTemperature = (current) => {
   return (
     <>
@@ -72,6 +86,11 @@ export const weatherAndTemperature = (current) => {
   )
 }
 
+/**
+ * Shows current weather data, only basic as we define not details
+ * @param {*} current object with current weather data
+ * @returns Grid structure with current weather data
+ */
 export const currentBasicWeather = (current) => {
   return (
     <Grid container>
@@ -81,7 +100,7 @@ export const currentBasicWeather = (current) => {
           <WiThermometer color='red' /> {current.maxTemperature} ºC
         </Box>
         <Divider />
-        <Box sx={boxStyle}> ?<BsCloudRain /> {t()} {current.rainProbability} % </Box>
+        <Box sx={boxStyle}> <BsCloudRain /> {t()} {current.rainProbability} % </Box>
         <Divider />
         <Box sx={boxStyle}> <BsSunrise /> {t()} {current.sunrise} </Box>
         <Divider />
@@ -103,6 +122,11 @@ export const currentBasicWeather = (current) => {
   )
 }
 
+/**
+ * Interpret wind direction value into directional icon
+ * @param {*} direction wind degree number value
+ * @returns wind direction icon
+ */
 export const showWindDirection = (direction) => {
   const size = '2em'
   if (direction > 337.5) return <WiDirectionUp size={size} />

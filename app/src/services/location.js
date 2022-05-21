@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/api/location'
+const baseUrl = '/api/location'
 
 /**
  * Get current user position from the browser
@@ -28,7 +28,7 @@ const getCurrCoords = async () => {
 }
 
 /**
- * Auto actual info obtaining
+ * Auto getting - actual info
  */
 const getLocInfoAllAuto = async (coords) => {
   const { data } = await axios.get(baseUrl, { params: { coords } })
@@ -36,6 +36,9 @@ const getLocInfoAllAuto = async (coords) => {
   return data
 }
 
+/**
+ * Manual getting - actual info
+ */
 const getLocInfoManual = async city => {
   const { data } = await axios.get(baseUrl, { params: { city } })
 
