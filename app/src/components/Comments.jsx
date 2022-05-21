@@ -68,14 +68,6 @@ export default function Comments () {
   return (
     <>
       <Grid container direction='column'>
-<<<<<<< HEAD
-        <h1>
-          <GoComment id='commentIcon' />
-          Comments
-        </h1>
-        <Grid item id='commentContainer'>
-          <MapComments data={comments} />
-=======
         <Grid container id='topContainer'>
           <h1 className='comments-title'>
             <FaRegComments id='commentIcon' />
@@ -84,7 +76,6 @@ export default function Comments () {
           <Grid item id='commentContainer'>
             <MapComments data={comments} />
           </Grid>
->>>>>>> tmp
         </Grid>
         <form onSubmit={sendComment} id='commentForm'>
           <input
