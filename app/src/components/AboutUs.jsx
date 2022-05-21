@@ -1,18 +1,19 @@
 import '../styles/AboutUs.css'
 import githubIcon from '../assets/githubLogo.png'
 
-/** TODO
- * Añadir links de APIs y/o las cosas más
- * importantes que hayamos usado en el footer
- * Style
+/**
+ * @todo Añadir links de APIs y/o las cosas más importantes que hayamos usado en el footer
+ * @todo Style
+ *
+ * @return Container with info about ourselves and the project. Footer with important links
  */
 
 export default function AboutUs () {
   return (
     <>
       <div id='containerAboutUs'>
-        <h1>Sobre Nosotros</h1>
-        <p>Este es un proyecto de fin de estudios de Grado Superior en el IES Badia.</p>
+        <h1>About us</h1>
+        <p>This is a project for the end of superior grade studies in <i>Institut de Badia del Vallès.</i></p>
       </div>
       <footer>
         <a id='githubIcon' href='https://github.com/CyohProject/meteo-app'><img src={githubIcon} alt='githubIcon' /></a>

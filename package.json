@@ -1,6 +1,6 @@
 {
   "name": "meteo-app",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Meteorologic app with user interaction",
   "repository": "https://github.com/CyohProject/meteo-app.git",
   "authors": "Cyoh Project Team",
@@ -11,10 +11,14 @@
     "app"
   ],
   "engines": {
-    "yarn": "1.22.17"
+    "yarn": "1.22.17",
+    "node": "14.17.3"
   },
   "scripts": {
     "lint": "standard .\\app .\\api",
+    "build": "yarn workspace app build",
+    "start": "yarn workspace api start",
+    "dev:api": "yarn workspace app build && yarn workspace api dev",
     "front": "cd app && yarn start",
     "back": "cd api && yarn start"
   },
@@ -22,6 +26,7 @@
     "standard": "17.0.0"
   },
   "eslintConfig": {
+    "ignorePatterns": "build",
     "extends": ".\\node_modules\\standard\\eslintrc.json"
   }
 }
